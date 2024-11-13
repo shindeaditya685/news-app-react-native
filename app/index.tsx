@@ -9,12 +9,14 @@ import React from "react";
 import { useRouter } from "expo-router";
 import { Colors } from "@/constants/Colors";
 import Animated, { FadeInDown, FadeInRight } from "react-native-reanimated";
+import { StatusBar } from "expo-status-bar";
 
 const Page = () => {
   const router = useRouter();
 
   return (
     <View style={styles.container}>
+      <StatusBar style="light" />
       <ImageBackground
         source={require("@/assets/images/getting-started.jpg")}
         style={{ flex: 1 }}
