@@ -1,22 +1,27 @@
-import { StyleSheet, Text, TextInput, View } from 'react-native'
-import React from 'react'
-import { Ionicons } from '@expo/vector-icons'
-import { Colors } from '@/constants/Colors'
+import { StyleSheet, Text, TextInput, View } from "react-native";
+import React from "react";
+import { Ionicons } from "@expo/vector-icons";
+import { Colors } from "@/constants/Colors";
 
-type Props = {}
+type Props = {};
 
 const SearchBar = (props: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.searchBar}>
-        <Ionicons name='search-outline' size={20} color={Colors.lightGrey}/>
-        <TextInput placeholder='Search' placeholderTextColor={Colors.lightGrey} style={styles.searchTxt} autoCapitalize='none'/>
+        <Ionicons name="search-outline" size={20} color={Colors.lightGrey} />
+        <TextInput
+          placeholder="Search"
+          placeholderTextColor={Colors.lightGrey}
+          style={styles.searchTxt}
+          autoCapitalize="none"
+        />
       </View>
     </View>
-  )
-}
+  );
+};
 
-export default SearchBar
+export default SearchBar;
 
 const styles = StyleSheet.create({
   container: {
@@ -29,10 +34,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     flexDirection: "row",
     gap: 10,
+    marginBottom: 20,
   },
   searchTxt: {
     fontSize: 14,
     flex: 1,
-    color: Colors.darkGrey
-  }
+    color: Colors.darkGrey,
+  },
 });
