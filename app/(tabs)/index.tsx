@@ -6,6 +6,8 @@ import SearchBar from "@/components/SearchBar";
 import axios from "axios";
 import { NewsDataType } from "@/types";
 import BreakingNews from "@/components/BreakingNews";
+import Categories from "@/components/Categories";
+import NewsList from "@/components/NewsList";
 
 type Props = {};
 
@@ -15,7 +17,7 @@ const Page = (props: Props) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    getBreakingNews();
+    // getBreakingNews();
   }, []);
 
   const getBreakingNews = async () => {
@@ -33,6 +35,10 @@ const Page = (props: Props) => {
     }
   };
 
+  const onCatChanged = (category: string) => {
+    console.log("Category", category);
+  };
+
   return (
     <View style={(styles.container, { paddingTop: safeTop })}>
       <Header />
@@ -42,6 +48,7 @@ const Page = (props: Props) => {
       ) : (
         <BreakingNews newsList={breakingNews} />
       )}
+      <Categories onCatChanged={onCatChanged} />
     </View>
   );
 };
