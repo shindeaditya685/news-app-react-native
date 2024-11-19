@@ -25,8 +25,8 @@ const Page = (props: Props) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    getBreakingNews();
-    getNews();
+    // getBreakingNews();
+    // getNews();
   }, []);
 
   const getBreakingNews = async () => {
@@ -70,9 +70,9 @@ const Page = (props: Props) => {
   };
 
   return (
-    <ScrollView style={(styles.container, { paddingTop: safeTop })}>
+    <ScrollView style={[styles.container, { paddingTop: safeTop }]}>
       <Header />
-      <SearchBar />
+      <SearchBar withHorizontalPadding={true} />
       {isLoading ? (
         <Loading size={"large"} />
       ) : (

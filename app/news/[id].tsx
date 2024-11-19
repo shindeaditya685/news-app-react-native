@@ -24,7 +24,7 @@ const NewsDetails = (props: Props) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    getNews();
+    // getNews();
   }, []);
 
   const getNews = async (category: string = "") => {
