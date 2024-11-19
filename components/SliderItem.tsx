@@ -1,4 +1,11 @@
-import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
+import {
+  Dimensions,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
 import { NewsDataType } from "@/types";
 import Animated, {
@@ -9,6 +16,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { LinearGradient } from "expo-linear-gradient";
 import { Colors } from "@/constants/Colors";
+import { Link } from "expo-router";
 
 type Props = {
   slideItem: NewsDataType;
@@ -43,26 +51,30 @@ const SliderItem = ({ slideItem, index, scrollX }: Props) => {
   });
 
   return (
-    <Animated.View style={[styles.itemWrapper, rnStyle]}>
-      <Image source={{ uri: slideItem.image_url }} style={styles.image} />
-      <LinearGradient
-        colors={["transparent", "rgba(0, 0, 0, 0.8)"]}
-        style={styles.background}
-      >
-        <View style={styles.sourceInfo}>
-          {slideItem.source_icon && (
-            <Image
-              source={{ uri: slideItem.source_icon }}
-              style={styles.sourceIcon}
-            />
-          )}
-          <Text style={styles.sourceName}>{slideItem.source_name}</Text>
-        </View>
-        <Text style={styles.title} numberOfLines={2}>
-          {slideItem.title}
-        </Text>
-      </LinearGradient>
-    </Animated.View>
+    <Link href={`/news/${slideItem.article_id}`} asChild>
+      <TouchableOpacity>
+        <Animated.View style={[styles.itemWrapper, rnStyle]}>
+          <Image source={{ uri: slideItem.image_url }} style={styles.image} />
+          <LinearGradient
+            colors={["transparent", "rgba(0, 0, 0, 0.8)"]}
+            style={styles.background}
+          >
+            <View style={styles.sourceInfo}>
+              {slideItem.source_icon && (
+                <Image
+                  source={{ uri: slideItem.source_icon }}
+                  style={styles.sourceIcon}
+                />
+              )}
+              <Text style={styles.sourceName}>{slideItem.source_name}</Text>
+            </View>
+            <Text style={styles.title} numberOfLines={2}>
+              {slideItem.title}
+            </Text>
+          </LinearGradient>
+        </Animated.View>
+      </TouchableOpacity>
+    </Link>
   );
 };
 
